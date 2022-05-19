@@ -11,13 +11,12 @@ program main
 	integer :: i,erro,iaux
 
 	integer,parameter :: nsolar=2002
-	integer :: noptics
+	integer,parameter :: noptics=6001
 	integer,parameter :: nvec=6001
 	integer,parameter :: nth= 500
 
 	double precision,dimension(nsolar,2) :: solarinc
-	
-	double precision,allocatable,dimension(:,:) :: abscoef
+	double precision,dimension(noptics,2) :: abscoef
 
 	double precision,dimension(nvec,2) :: isolar,isolarm,sepflux
 	double precision,dimension(nvec,2) :: iabscoef,iabscoefsq
@@ -69,9 +68,6 @@ program main
 
       CALL getarg(3, arg)
 		read(arg,*,iostat=ios) thickmaxm
-		
-      CALL getarg(4, arg)
-		read(arg,*,iostat=ios) noptics		
 
 
 	OPEN(UNIT=100, FILE= "am1.5G.dat",STATUS='old', IOSTAT=erro)
@@ -92,15 +88,12 @@ program main
 
 	end do
 
-		!read(*,*) flag
-		
-	allocate(abscoef(noptics,2))
-
+		read(*,*) flag
 
 	do i=1,noptics
 
-		read(*,*) abscoef(i,1),aflag(2),aflag(3),aflag(4),aflag(5)
-		abscoef(i,2) = (aflag(2)+aflag(3)+aflag(4))*1E04		
+		read(*,*) abscoef(i,1),aflag(2),aflag(3),aflag(4),aflag(5),aflag(6),aflag(7)
+		abscoef(i,2) = aflag(2)+aflag(3)+aflag(4)		
 		!abscoef(i,2) = aflag(2)+aflag(3)+aflag(4)+2.0*(aflag(5)+aflag(6)+aflag(7))
 
 		aflag = 0.0
@@ -252,7 +245,7 @@ program main
 	write(*,*) "#FF",faux9*100.00,"%"	
 
 
-	deallocate(abscoef)
+
 
 	close(100)
 	close(200)
