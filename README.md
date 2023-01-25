@@ -17,7 +17,7 @@ Code Running: ./pce.x dirgap indgap thickmaxm < abs_coef > pce.out
 
 dirgap -> direct gap value in eV
 
-indgap -> indirect gap in eV
+indgap -> fundamental gap in eV (could be direct or indirect, depends of the system, it's obtained by CBM-VBM)
 
 thickmaxm -> maximum crystal thickness in meters
 
