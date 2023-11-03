@@ -13,12 +13,12 @@ also at arxiv: https://arxiv.org/pdf/1705.07762.pdf
 
 Code compilation: ifort pce-code.f90 -o pce.x
 
-Code Running: ./pce.x dirgap indgap thickmaxm < abs_coef > pce.out
+Code Running: ./pce.x dirgap fundgap thickmaxm < abs_coef > pce.out
 
 dirgap -> direct gap value in eV
 
-indgap -> fundamental gap in eV (could be direct or indirect, depends of the system, it's obtained by CBM-VBM)
+fundgap -> fundamental gap in eV (could be direct or indirect, depends of the system, it's obtained by CBM-VBM)
 
 thickmaxm -> maximum crystal thickness in meters
 
-abs_coef -> file with the absorption coefficient data
+abs_coef -> file with the absorption coefficient data in cm^-1
